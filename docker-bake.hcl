@@ -1,5 +1,5 @@
 group "default" {
-    targets = ["I2V-14B-720P"]
+    targets = ["base", "i2V-14b-720p"]
 }
 
 variable "DOCKERHUB_REPO_NAME" {
@@ -23,7 +23,19 @@ variable "EXTRA_TAG" {
     default = "-dev"
 }
 
-target "I2V-14B-720P" {
+target "base" {
+    dockerfile = "Dockerfile"
+    tags = ["${DOCKERHUB_REPO_NAME}:torch${TORCH_VERSION}-${CUDA_VERSION}-base${EXTRA_TAG}"]
+    context = "."
+    args = {
+        BASE_IMAGE         = BASE_IMAGE
+        PYTHON_VERSION     = PYTHON_VERSION
+        TORCH_VERSION      = TORCH_VERSION
+        CUDA_VERSION       = CUDA_VERSION
+    }
+}
+
+target "i2V-14b-720p" {
     dockerfile = "Dockerfile"
     tags = ["${DOCKERHUB_REPO_NAME}:torch${TORCH_VERSION}-${CUDA_VERSION}-i2V-14b-720p${EXTRA_TAG}"]
     context = "."
