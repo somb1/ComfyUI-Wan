@@ -38,7 +38,7 @@ RUN apt-get update --yes && \
     apt-get upgrade --yes && \
     apt-get install --yes --no-install-recommends \
         git wget curl bash nginx-light rsync sudo binutils ffmpeg lshw nano tzdata file build-essential nvtop \
-        libgl1 libglib2.0-0 \
+        libgl1 libglib2.0-0 clang libomp-dev \
         openssh-server ca-certificates && \
     apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
@@ -59,11 +59,6 @@ RUN pip install --no-cache-dir -U \
     huggingface_hub hf_transfer \
     torch==${TORCH_VERSION} torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/${CUDA_VERSION} \
     triton
-
-# Install SageAttention
-# RUN git clone https://github.com/thu-ml/SageAttention.git && \
-#     cd SageAttention && \
-#     python setup.py install
 
 # Install ComfyUI and ComfyUI Manager
 RUN git clone https://github.com/comfyanonymous/ComfyUI.git && \

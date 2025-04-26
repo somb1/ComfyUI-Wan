@@ -43,7 +43,7 @@ target "_common" {
 target "base" {
     inherits = ["_common"]
     tags = tag("base")
-    cache-to   = ["type=gha,compression=zstd"]
+    cache-to   = ["type=gha,mode=max,compression=zstd"]
 }
 
 target "t2v-14b" {
