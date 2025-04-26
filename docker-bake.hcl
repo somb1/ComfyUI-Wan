@@ -19,7 +19,7 @@ variable "EXTRA_TAG" {
     default = "-dev"
 }
 
-group "default" {
+group "all" {
     targets = ["base", "t2v-14b", "i2V-14b-720p", "i2V-14b-480p"]
 }
 
