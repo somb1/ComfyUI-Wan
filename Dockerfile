@@ -61,7 +61,7 @@ RUN pip install --no-cache-dir -U \
 
 # Install SageAttention
 RUN git clone https://github.com/thu-ml/SageAttention.git && \
-    cd sageattention && \
+    cd SageAttention && \
     python setup.py install
 
 # Install ComfyUI and ComfyUI Manager
