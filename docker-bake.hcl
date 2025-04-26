@@ -1,20 +1,3 @@
-group "default" {
-    targets = ["base", "t2v-14b", "i2V-14b-720p", "i2V-14b-480p"]
-}
-
-target "_common" {
-    dockerfile = "Dockerfile"
-    context = "."
-    args = {
-        BASE_IMAGE         = BASE_IMAGE
-        PYTHON_VERSION     = PYTHON_VERSION
-        TORCH_VERSION      = TORCH_VERSION
-        CUDA_VERSION       = CUDA_VERSION
-    }
-    cache-from = ["type=gha"]
-    cache-to   = ["type=gha,compression=zstd"]
-}
-
 variable "DOCKERHUB_REPO_NAME" {
     default = "sombi/comfyui-wan"
 }
@@ -34,6 +17,23 @@ variable "CUDA_VERSION" {
 
 variable "EXTRA_TAG" {
     default = "-dev"
+}
+
+group "default" {
+    targets = ["base", "t2v-14b", "i2V-14b-720p", "i2V-14b-480p"]
+}
+
+target "_common" {
+    dockerfile = "Dockerfile"
+    context = "."
+    args = {
+        BASE_IMAGE         = BASE_IMAGE
+        PYTHON_VERSION     = PYTHON_VERSION
+        TORCH_VERSION      = TORCH_VERSION
+        CUDA_VERSION       = CUDA_VERSION
+    }
+    cache-from = ["type=gha"]
+    cache-to   = ["type=gha,compression=zstd"]
 }
 
 target "base" {
