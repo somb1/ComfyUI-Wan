@@ -83,8 +83,8 @@ RUN cd ComfyUI/custom_nodes && \
 RUN mkdir -p /comfyui-models/{diffusion_models,vae,text_encoders} /workspace/{ComfyUI,logs,venv} 
 
 # Model
-RUN if [ -n "$PREINSTALLED_MODEL_URL" ]; then \
-        wget -q "$PREINSTALLED_MODEL_URL" -P /comfyui-models/diffusion_models; \
+RUN if [ "$PREINSTALLED_MODEL" = "I2V-14B-720P" ]; then \
+    wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1-I2V-14B-720P_fp8_e4m3fn.safetensors -P /comfyui-models/diffusion_models; \
     fi
 
 # VAE
