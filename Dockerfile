@@ -87,6 +87,9 @@ RUN if [ "$PREINSTALLED_MODEL" = "I2V-14B-720P" ]; then \
     wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1-I2V-14B-720P_fp8_e4m3fn.safetensors -P /comfyui-models/diffusion_models; \
     wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1_VAE_bf16.safetensors -P /comfyui-models/vae; \
     wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/open-clip-xlm-roberta-large-vit-huge-14_visual_fp16.safetensors -P /comfyui-models/text_encoders; \
+    elif [ "$PREINSTALLED_MODEL" = "T2V-14B" ]; then \
+    wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1-T2V-14B_fp8_e4m3fn.safetensors -P /comfyui-models/diffusion_models; \
+    wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1_VAE_bf16.safetensors -P /comfyui-models/vae; \
     wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/umt5-xxl-enc-bf16.safetensors -P /comfyui-models/text_encoders; \
     fi
 
