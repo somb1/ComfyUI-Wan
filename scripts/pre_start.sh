@@ -35,13 +35,13 @@ for dir in /comfyui-models/*/; do
     ln -sf "$dir" "/workspace/ComfyUI/models/$name"
 done
 
-if [ -n "$INSTALL_SAGEATTENTION" ]; then
+if [ "${INSTALL_SAGEATTENTION,,}" = "true" ]; then
     if pip show sageattention > /dev/null 2>&1; then
         echo "**** SageAttention is already installed. Skipping installation. ****"
     else
-        echo "**** SageAttention is not installed. Installing, please wait.... ****"
+        echo "**** SageAttention is not installed. Installing, please wait.... (This may take a long time, approximately 5+ minutes.) ****"
         git clone https://github.com/thu-ml/SageAttention.git /SageAttention
         cd /SageAttention
-        python setup.py install
+        python setup.py install > /dev/null 2>&1
     fi
 fi
