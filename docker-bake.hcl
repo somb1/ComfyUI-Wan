@@ -38,12 +38,12 @@ target "_common" {
         CUDA_VERSION       = CUDA_VERSION
     }
     cache-from = ["type=gha"]
-    cache-to   = ["type=gha,compression=zstd"]
 }
 
 target "base" {
     inherits = ["_common"]
     tags = tag("base")
+    cache-to   = ["type=gha,compression=zstd"]
 }
 
 target "t2v-14b" {
