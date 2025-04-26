@@ -19,8 +19,13 @@ variable "EXTRA_TAG" {
     default = "-dev"
 }
 
+function "tag" {
+    params = [tag]
+    result = ["${DOCKERHUB_REPO_NAME}:${tag}-torch${TORCH_VERSION}-${CUDA_VERSION}${EXTRA_TAG}"]
+}
+
 group "all" {
-    targets = ["base", "t2v-14b", "i2V-14b-720p", "i2V-14b-480p"]
+    targets = ["base", "t2v-14b", "i2v-14b-720p", "i2V-14b-480p"]
 }
 
 target "_common" {
@@ -38,12 +43,12 @@ target "_common" {
 
 target "base" {
     inherits = ["_common"]
-    tags = ["${DOCKERHUB_REPO_NAME}:torch${TORCH_VERSION}-${CUDA_VERSION}-base${EXTRA_TAG}"]
+    tags = tag("base")
 }
 
 target "t2v-14b" {
     inherits = ["_common"]
-    tags = ["${DOCKERHUB_REPO_NAME}:torch${TORCH_VERSION}-${CUDA_VERSION}-t2v-14b${EXTRA_TAG}"]
+    tags = tag("t2v-14b")
     args = {
         PREINSTALLED_MODEL = "T2V-14B"
     }
@@ -51,7 +56,7 @@ target "t2v-14b" {
 
 target "i2V-14b-720p" {
     inherits = ["_common"]
-    tags = ["${DOCKERHUB_REPO_NAME}:torch${TORCH_VERSION}-${CUDA_VERSION}-i2V-14b-720p${EXTRA_TAG}"]
+    tags = tag("i2v-14b-720p")
     args = {
         PREINSTALLED_MODEL = "I2V-14B-720P"
     }
@@ -59,7 +64,7 @@ target "i2V-14b-720p" {
 
 target "i2V-14b-480p" {
     inherits = ["_common"]
-    tags = ["${DOCKERHUB_REPO_NAME}:torch${TORCH_VERSION}-${CUDA_VERSION}-i2V-14b-480p${EXTRA_TAG}"]
+    tags = tag("i2v-14b-480p")
     args = {
         PREINSTALLED_MODEL = "I2V-14B-480P"
     }
@@ -67,7 +72,7 @@ target "i2V-14b-480p" {
 
 target "flf2v-14b" {
     inherits = ["_common"]
-    tags = ["${DOCKERHUB_REPO_NAME}:torch${TORCH_VERSION}-${CUDA_VERSION}-flf2v-14b${EXTRA_TAG}"]
+    tags = tag("flf2v-14b")
     args = {
         PREINSTALLED_MODEL = "FLF2V-14B"
     }
