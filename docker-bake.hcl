@@ -7,7 +7,7 @@ variable "DOCKERHUB_REPO_NAME" {
 }
 
 variable "BASE_IMAGE" {
-    default = "nvidia/cuda:12.4.1-devel-ubuntu22.04"
+    default = "nvidia/cuda:12.4.1-runtime-ubuntu22.04"
 }
 variable "PYTHON_VERSION" {
     default = "3.12"
