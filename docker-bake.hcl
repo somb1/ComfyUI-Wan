@@ -3,7 +3,7 @@ group "default" {
 }
 
 variable "DOCKERHUB_REPO_NAME" {
-    default = "comfyui-wan"
+    default = "sombi/comfyui-wan"
 }
 
 variable "BASE_IMAGE" {
