@@ -54,7 +54,7 @@ target "t2v-14b" {
     }
 }
 
-target "i2V-14b-720p" {
+target "i2v-14b-720p" {
     inherits = ["_common"]
     tags = tag("i2v-14b-720p")
     args = {
@@ -62,7 +62,7 @@ target "i2V-14b-720p" {
     }
 }
 
-target "i2V-14b-480p" {
+target "i2v-14b-480p" {
     inherits = ["_common"]
     tags = tag("i2v-14b-480p")
     args = {
