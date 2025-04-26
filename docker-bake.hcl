@@ -34,7 +34,7 @@ target "base" {
         CUDA_VERSION       = CUDA_VERSION
     }
     cache-from = ["type=gha"]
-    cache-to   = ["type=gha,mode=max"]
+    cache-to   = ["type=gha"]
 }
 
 target "t2v-14b" {
@@ -49,7 +49,7 @@ target "t2v-14b" {
         PREINSTALLED_MODEL = "T2V-14B"
     }
     cache-from = ["type=gha"]
-    cache-to   = ["type=gha,mode=max"]
+    cache-to   = ["type=gha"]
 }
 
 target "i2V-14b-720p" {
@@ -64,7 +64,7 @@ target "i2V-14b-720p" {
         PREINSTALLED_MODEL = "I2V-14B-720P"
     }
     cache-from = ["type=gha"]
-    cache-to   = ["type=gha,mode=max"]
+    cache-to   = ["type=gha"]
 }
 
 target "i2V-14b-480p" {
@@ -79,7 +79,7 @@ target "i2V-14b-480p" {
         PREINSTALLED_MODEL = "I2V-14B-480P"
     }
     cache-from = ["type=gha"]
-    cache-to   = ["type=gha,mode=max"]
+    cache-to   = ["type=gha"]
 }
 
 target "flf2v-14b" {
@@ -94,5 +94,5 @@ target "flf2v-14b" {
         PREINSTALLED_MODEL = "FLF2V-14B"
     }
     cache-from = ["type=gha"]
-    cache-to   = ["type=gha,mode=max"]
+    cache-to   = ["type=gha"]
 }
