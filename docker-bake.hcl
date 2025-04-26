@@ -2,6 +2,19 @@ group "default" {
     targets = ["base", "t2v-14b", "i2V-14b-720p", "i2V-14b-480p"]
 }
 
+target "_common" {
+    dockerfile = "Dockerfile"
+    context = "."
+    args = {
+        BASE_IMAGE         = BASE_IMAGE
+        PYTHON_VERSION     = PYTHON_VERSION
+        TORCH_VERSION      = TORCH_VERSION
+        CUDA_VERSION       = CUDA_VERSION
+    }
+    cache-from = ["type=gha"]
+    cache-to   = ["type=gha,compression=zstd"]
+}
+
 variable "DOCKERHUB_REPO_NAME" {
     default = "sombi/comfyui-wan"
 }
@@ -24,75 +37,38 @@ variable "EXTRA_TAG" {
 }
 
 target "base" {
-    dockerfile = "Dockerfile"
-    context = "."
+    inherits = ["_common"]
     tags = ["${DOCKERHUB_REPO_NAME}:torch${TORCH_VERSION}-${CUDA_VERSION}-base${EXTRA_TAG}"]
-    args = {
-        BASE_IMAGE         = BASE_IMAGE
-        PYTHON_VERSION     = PYTHON_VERSION
-        TORCH_VERSION      = TORCH_VERSION
-        CUDA_VERSION       = CUDA_VERSION
-    }
-    cache-from = ["type=gha"]
-    cache-to   = ["type=gha"]
 }
 
 target "t2v-14b" {
-    dockerfile = "Dockerfile"
-    context = "."
+    inherits = ["_common"]
     tags = ["${DOCKERHUB_REPO_NAME}:torch${TORCH_VERSION}-${CUDA_VERSION}-t2v-14b${EXTRA_TAG}"]
     args = {
-        BASE_IMAGE         = BASE_IMAGE
-        PYTHON_VERSION     = PYTHON_VERSION
-        TORCH_VERSION      = TORCH_VERSION
-        CUDA_VERSION       = CUDA_VERSION
         PREINSTALLED_MODEL = "T2V-14B"
     }
-    cache-from = ["type=gha"]
-    cache-to   = ["type=gha"]
 }
 
 target "i2V-14b-720p" {
-    dockerfile = "Dockerfile"
-    context = "."
+    inherits = ["_common"]
     tags = ["${DOCKERHUB_REPO_NAME}:torch${TORCH_VERSION}-${CUDA_VERSION}-i2V-14b-720p${EXTRA_TAG}"]
     args = {
-        BASE_IMAGE         = BASE_IMAGE
-        PYTHON_VERSION     = PYTHON_VERSION
-        TORCH_VERSION      = TORCH_VERSION
-        CUDA_VERSION       = CUDA_VERSION
         PREINSTALLED_MODEL = "I2V-14B-720P"
     }
-    cache-from = ["type=gha"]
-    cache-to   = ["type=gha"]
 }
 
 target "i2V-14b-480p" {
-    dockerfile = "Dockerfile"
-    context = "."
+    inherits = ["_common"]
     tags = ["${DOCKERHUB_REPO_NAME}:torch${TORCH_VERSION}-${CUDA_VERSION}-i2V-14b-480p${EXTRA_TAG}"]
     args = {
-        BASE_IMAGE         = BASE_IMAGE
-        PYTHON_VERSION     = PYTHON_VERSION
-        TORCH_VERSION      = TORCH_VERSION
-        CUDA_VERSION       = CUDA_VERSION
         PREINSTALLED_MODEL = "I2V-14B-480P"
     }
-    cache-from = ["type=gha"]
-    cache-to   = ["type=gha"]
 }
 
 target "flf2v-14b" {
-    dockerfile = "Dockerfile"
-    context = "."
+    inherits = ["_common"]
     tags = ["${DOCKERHUB_REPO_NAME}:torch${TORCH_VERSION}-${CUDA_VERSION}-flf2v-14b${EXTRA_TAG}"]
     args = {
-        BASE_IMAGE         = BASE_IMAGE
-        PYTHON_VERSION     = PYTHON_VERSION
-        TORCH_VERSION      = TORCH_VERSION
-        CUDA_VERSION       = CUDA_VERSION
         PREINSTALLED_MODEL = "FLF2V-14B"
     }
-    cache-from = ["type=gha"]
-    cache-to   = ["type=gha"]
 }
