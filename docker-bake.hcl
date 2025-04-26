@@ -25,7 +25,7 @@ function "tag" {
 }
 
 group "all" {
-    targets = ["base", "t2v-14b", "i2v-14b-720p", "i2V-14b-480p"]
+    targets = ["base", "t2v-14b", "i2v-14b-720p", "i2V-14b-480p", "flf2v-14b"]
 }
 
 target "_common" {
