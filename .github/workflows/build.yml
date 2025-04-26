@@ -3,7 +3,7 @@ name: Build and Push Docker Images
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "0 */8 * * *"
 
 jobs:
   bake:
@@ -14,7 +14,7 @@ jobs:
         target: [i2V-14b-720p, i2V-14b-480p, flf2v-14b]
     steps:
       - name: Maximize build space
-        uses: AdityaGarg8/remove-unwanted-software@v4.1
+        uses: AdityaGarg8/remove-unwanted-software@v5
         with:
           remove-dotnet: 'true'
           remove-android: 'true'
