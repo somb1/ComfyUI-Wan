@@ -82,17 +82,13 @@ RUN cd ComfyUI/custom_nodes && \
 # Ensure some directories are created in advance
 RUN mkdir -p /comfyui-models/{diffusion_models,vae,text_encoders} /workspace/{ComfyUI,logs,venv} 
 
-# Model
+# Model, Vae, Text Encoder
 RUN if [ "$PREINSTALLED_MODEL" = "I2V-14B-720P" ]; then \
     wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1-I2V-14B-720P_fp8_e4m3fn.safetensors -P /comfyui-models/diffusion_models; \
+    wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1_VAE_bf16.safetensors -P /comfyui-models/vae; \
+    wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/open-clip-xlm-roberta-large-vit-huge-14_visual_fp16.safetensors -P /comfyui-models/text_encoders; \
+    wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/umt5-xxl-enc-bf16.safetensors -P /comfyui-models/text_encoders; \
     fi
-
-# VAE
-RUN wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1_VAE_bf16.safetensors -P /comfyui-models/vae
-
-# Text Encoder
-RUN wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/open-clip-xlm-roberta-large-vit-huge-14_visual_fp16.safetensors -P /comfyui-models/text_encoders && \
-    wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/umt5-xxl-enc-bf16.safetensors -P /comfyui-models/text_encoders
 
 # NGINX Proxy Configuration
 COPY proxy/nginx.conf /etc/nginx/nginx.conf
