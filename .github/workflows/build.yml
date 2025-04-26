@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [base]
+        target: [I2V-14B-720P]
     steps:
       - uses: actions/checkout@v4
 
