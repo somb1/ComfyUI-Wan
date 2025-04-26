@@ -76,6 +76,7 @@ RUN git clone https://github.com/comfyanonymous/ComfyUI.git && \
 # Install custom nodes
 RUN cd ComfyUI/custom_nodes && \
     git clone https://github.com/kijai/ComfyUI-WanVideoWrapper.git && \
+    git clone https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git && \
     find . -name "requirements.txt" -exec pip install --no-cache-dir -r {} \; && \
     find . -name "install.py" -exec python {} \;
 
