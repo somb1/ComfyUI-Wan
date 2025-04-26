@@ -40,8 +40,5 @@ jobs:
       - name: Build and push
         uses: docker/bake-action@v6
         with:
-          context: .
           targets: ${{ matrix.target }}
           push: true
-          cache-from: type=gha
-          cache-to: type=gha,mode=max

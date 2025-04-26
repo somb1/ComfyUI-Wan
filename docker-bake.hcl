@@ -25,20 +25,22 @@ variable "EXTRA_TAG" {
 
 target "base" {
     dockerfile = "Dockerfile"
-    tags = ["${DOCKERHUB_REPO_NAME}:torch${TORCH_VERSION}-${CUDA_VERSION}-base${EXTRA_TAG}"]
     context = "."
+    tags = ["${DOCKERHUB_REPO_NAME}:torch${TORCH_VERSION}-${CUDA_VERSION}-base${EXTRA_TAG}"]
     args = {
         BASE_IMAGE         = BASE_IMAGE
         PYTHON_VERSION     = PYTHON_VERSION
         TORCH_VERSION      = TORCH_VERSION
         CUDA_VERSION       = CUDA_VERSION
     }
+    cache-from = ["type=gha"]
+    cache-to   = ["type=gha,mode=max"]
 }
 
 target "t2v-14b" {
     dockerfile = "Dockerfile"
-    tags = ["${DOCKERHUB_REPO_NAME}:torch${TORCH_VERSION}-${CUDA_VERSION}-t2v-14b${EXTRA_TAG}"]
     context = "."
+    tags = ["${DOCKERHUB_REPO_NAME}:torch${TORCH_VERSION}-${CUDA_VERSION}-t2v-14b${EXTRA_TAG}"]
     args = {
         BASE_IMAGE         = BASE_IMAGE
         PYTHON_VERSION     = PYTHON_VERSION
@@ -46,12 +48,14 @@ target "t2v-14b" {
         CUDA_VERSION       = CUDA_VERSION
         PREINSTALLED_MODEL = "T2V-14B"
     }
+    cache-from = ["type=gha"]
+    cache-to   = ["type=gha,mode=max"]
 }
 
 target "i2V-14b-720p" {
     dockerfile = "Dockerfile"
-    tags = ["${DOCKERHUB_REPO_NAME}:torch${TORCH_VERSION}-${CUDA_VERSION}-i2V-14b-720p${EXTRA_TAG}"]
     context = "."
+    tags = ["${DOCKERHUB_REPO_NAME}:torch${TORCH_VERSION}-${CUDA_VERSION}-i2V-14b-720p${EXTRA_TAG}"]
     args = {
         BASE_IMAGE         = BASE_IMAGE
         PYTHON_VERSION     = PYTHON_VERSION
@@ -59,12 +63,14 @@ target "i2V-14b-720p" {
         CUDA_VERSION       = CUDA_VERSION
         PREINSTALLED_MODEL = "I2V-14B-720P"
     }
+    cache-from = ["type=gha"]
+    cache-to   = ["type=gha,mode=max"]
 }
 
 target "i2V-14b-480p" {
     dockerfile = "Dockerfile"
-    tags = ["${DOCKERHUB_REPO_NAME}:torch${TORCH_VERSION}-${CUDA_VERSION}-i2V-14b-480p${EXTRA_TAG}"]
     context = "."
+    tags = ["${DOCKERHUB_REPO_NAME}:torch${TORCH_VERSION}-${CUDA_VERSION}-i2V-14b-480p${EXTRA_TAG}"]
     args = {
         BASE_IMAGE         = BASE_IMAGE
         PYTHON_VERSION     = PYTHON_VERSION
@@ -72,12 +78,14 @@ target "i2V-14b-480p" {
         CUDA_VERSION       = CUDA_VERSION
         PREINSTALLED_MODEL = "I2V-14B-480P"
     }
+    cache-from = ["type=gha"]
+    cache-to   = ["type=gha,mode=max"]
 }
 
 target "flf2v-14b" {
     dockerfile = "Dockerfile"
-    tags = ["${DOCKERHUB_REPO_NAME}:torch${TORCH_VERSION}-${CUDA_VERSION}-flf2v-14b${EXTRA_TAG}"]
     context = "."
+    tags = ["${DOCKERHUB_REPO_NAME}:torch${TORCH_VERSION}-${CUDA_VERSION}-flf2v-14b${EXTRA_TAG}"]
     args = {
         BASE_IMAGE         = BASE_IMAGE
         PYTHON_VERSION     = PYTHON_VERSION
@@ -85,4 +93,6 @@ target "flf2v-14b" {
         CUDA_VERSION       = CUDA_VERSION
         PREINSTALLED_MODEL = "FLF2V-14B"
     }
+    cache-from = ["type=gha"]
+    cache-to   = ["type=gha,mode=max"]
 }
