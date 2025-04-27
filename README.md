@@ -66,7 +66,7 @@ If you have any suggestions or issues, please leave feedback at **<https://githu
 - umt5_xxl_fp16.safetensors
 - clip_vision_h.safetensors
 
-##### Based on DOWNLOAD_MODEL_AT_STARTUP
+##### Diffusion Model Based on DOWNLOAD_MODEL_AT_STARTUP
 
 - T2V-14B -> wan2.1_t2v_14B_fp8_e4m3fn.safetensors
 - I2V-14B-720P -> wan2.1_i2v_720p_14B_fp8_e4m3fn.safetensors
