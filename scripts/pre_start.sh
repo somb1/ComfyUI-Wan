@@ -28,13 +28,13 @@ find "/workspace/venv/bin" -type f | while read -r file; do
     fi
 done
 
-case "$PREINSTALLED_MODEL" in
+case "$DOWNLOAD_MODEL_AT_STARTUP" in
     "")
-        echo "$PREINSTALLED_MODEL environment variable is not set. Skipping model download."
+        echo "DOWNLOAD_MODEL_AT_STARTUP environment variable is not set. Skipping model download."
         ;;
     "T2V-14B"|"I2V-14B-720P"|"I2V-14B-480P"|"FLF2V-14B")
         echo "**** Starting model download. This may take some time... ****"
-        case "$PREINSTALLED_MODEL" in
+        case "$DOWNLOAD_MODEL_AT_STARTUP" in
             "T2V-14B")
                 model="wan2.1_t2v_14B_fp8_e4m3fn.safetensors"
                 ;;

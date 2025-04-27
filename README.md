@@ -1,3 +1,5 @@
+> This template downloads the model based on the PREINSTALLED_MODEL variable. **Modify the template and change the value before deployment to download your desired model.**
+
 | Port | Type (HTTP/TCP) | Function     |
 |------|-----------------|--------------|
 | 22   | TCP             | SSH          |
@@ -12,11 +14,11 @@
 | `TIME_ZONE`                | System timezone. Defaults to `Etc/UTC` if unset.                            | `Etc/UTC`    |
 | `COMFYUI_EXTRA_ARGS`        | Passes extra startup options to ComfyUI, such as `--fast`.                  | (Not Set)    |
 | `INSTALL_SAGEATTENTION`     | Installs SageAttention at startup if not already installed. (May take about 5+ minutes.) (`True` or `False`) | `True` |
-| `PREINSTALLED_MODEL`        | Specifies the model to download at startup. Defaults to `I2V-14B-480P`.      | `I2V-14B-480P` |
+| `DOWNLOAD_MODEL_AT_STARTUP`        | Specifies the model to download at startup.     | `I2V-14B-480P` |
 
-#### Possible Values for `PREINSTALLED_MODEL`
+#### Possible Values for `DOWNLOAD_MODEL_AT_STARTUP`
 
-| PREINSTALLED_MODEL         | Description                                | Recommended VRAM |
+| DOWNLOAD_MODEL_AT_STARTUP         | Description                                | Recommended VRAM |
 |----------------------------|--------------------------------------------|------------------|
 | `T2V-14B`                  | 480p, 720p Text-to-Video                  | ?                |
 | `I2V-14B-720P`             | 720p Image-to-Video                       | 32GB+            |
@@ -66,18 +68,14 @@ If you have any suggestions or issues, please leave feedback at **<https://githu
 
 ---
 
-### Run Container on Local
+### Running the Container Locally
 
 ```bash
 docker run -d -p 3000:3000 -p 8888:8888 --gpus all -e JUPYTERLAB_PASSWORD="" -e TIME_ZONE="Etc/UTC" -e COMFYUI_EXTRA_ARGS="" -e INSTALL_SAGEATTENTION="True" -e PREINSTALLED_MODEL="I2V-14B-480P" sombi/comfyui-wan:base-torch2.6.0-cu124
 ```
 
-### Building Container
+### Building the Container
 
 ```bash
-# Build
-docker buildx bake base
-
-# Build and Push
-docker buildx bake base --push 
+docker buildx bake
 ```

@@ -25,7 +25,8 @@ function "tag" {
 }
 
 group "all" {
-    targets = ["base", "t2v-14b", "i2v-14b-720p", "i2V-14b-480p", "flf2v-14b"]
+    targets = ["base"]
+    default = "base"
 }
 
 target "_common" {
@@ -44,36 +45,4 @@ target "_common" {
 target "base" {
     inherits = ["_common"]
     tags = tag("base")
-}
-
-target "t2v-14b" {
-    inherits = ["_common"]
-    tags = tag("t2v-14b")
-    args = {
-        PREINSTALLED_MODEL = "T2V-14B"
-    }
-}
-
-target "i2v-14b-720p" {
-    inherits = ["_common"]
-    tags = tag("i2v-14b-720p")
-    args = {
-        PREINSTALLED_MODEL = "I2V-14B-720P"
-    }
-}
-
-target "i2v-14b-480p" {
-    inherits = ["_common"]
-    tags = tag("i2v-14b-480p")
-    args = {
-        PREINSTALLED_MODEL = "I2V-14B-480P"
-    }
-}
-
-target "flf2v-14b" {
-    inherits = ["_common"]
-    tags = tag("flf2v-14b")
-    args = {
-        PREINSTALLED_MODEL = "FLF2V-14B"
-    }
 }
