@@ -67,9 +67,9 @@ if [ "${INSTALL_SAGEATTENTION,,}" = "true" ]; then
         echo "**** SageAttention is already installed. Skipping installation. ****"
     else
         echo "**** SageAttention is not installed. Installing, please wait.... (This may take a long time, approximately 5+ minutes.) ****"
-        git clone https://github.com/thu-ml/SageAttention.git /SageAttention > /dev/null 2>&1
+        git clone https://github.com/thu-ml/SageAttention.git /SageAttention
         cd /SageAttention
-        python setup.py install > /dev/null 2>&1
+        python setup.py install 2>&1 >/dev/null
         echo "**** SageAttention installation completed. ****"
     fi
 fi

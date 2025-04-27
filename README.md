@@ -41,7 +41,7 @@
 | ComfyUI     | /workspace/ComfyUI/user/comfyui_3000.log    |
 | JupyterLab  | /workspace/logs/jupyterlab.log      |
 
-If you have any suggestions or issues, please leave feedback at **<https://github.com/somb1/ComfyUI-Wan/issues>**
+> If you have any suggestions or issues, please leave feedback at **<https://github.com/somb1/ComfyUI-Wan/issues>**
 
 ---
 
