@@ -59,6 +59,19 @@ If you have any suggestions or issues, please leave feedback at **<https://githu
 
 #### **Models**
 
+##### Common Files
+
+- wan_2.1_vae.safetensors
+- umt5_xxl_fp16.safetensors
+- clip_vision_h.safetensors
+
+##### Based on DOWNLOAD_MODEL_AT_STARTUP
+
+- T2V-14B -> wan2.1_t2v_14B_fp8_e4m3fn.safetensors
+- I2V-14B-720P -> wan2.1_i2v_720p_14B_fp8_e4m3fn.safetensors
+- I2V-14B-480P -> wan2.1_i2v_480p_14B_fp8_e4m3fn.safetensors
+- FLF2V-14B -> wan2.1_flf2v_720p_14B_fp8_e4m3fn.safetensors
+
 #### **Custom Nodes**
 
 - `ComfyUI-WanVideoWrapper` - [Link](https://github.com/kijai/ComfyUI-WanVideoWrapper)
@@ -71,7 +84,8 @@ If you have any suggestions or issues, please leave feedback at **<https://githu
 ### Running the Container Locally
 
 ```bash
-docker run -d -p 3000:3000 -p 8888:8888 --gpus all -e JUPYTERLAB_PASSWORD="" -e TIME_ZONE="Etc/UTC" -e COMFYUI_EXTRA_ARGS="" -e INSTALL_SAGEATTENTION="True" -e PREINSTALLED_MODEL="I2V-14B-480P" sombi/comfyui-wan:base-torch2.6.0-cu124
+docker run -d -p 3000:3000 -p 8888:8888 --gpus all -e JUPYTERLAB_PASSWORD="" -e TIME_ZONE="Etc/UTC" -e COMFYUI_EXTRA_ARGS="" -e INSTALL_SAGEATTENTION="True" -e PREINSTALLED_MODEL="I2V-14B-480P" --name comfyui-wan2.1-pytorch2.6.0_cu124 sombi/comfyui-wan:base-torch2.6.0-cu124
+
 ```
 
 ### Building the Container
