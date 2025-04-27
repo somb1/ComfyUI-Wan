@@ -2,7 +2,7 @@
 
 export PYTHONUNBUFFERED=1
 
-#echo "**** Setting the timezone based on the TIME_ZONE environment variable. If not set, it defaults to Etc/UTC. ****" && \
+echo "**** Setting the timezone based on the TIME_ZONE environment variable. If not set, it defaults to Etc/UTC. ****" && \
 export TZ=${TIME_ZONE:-"Etc/UTC"} && \
 echo "**** Timezone set to $TZ ****" && \
 echo "$TZ" | sudo tee /etc/timezone > /dev/null && \
@@ -32,17 +32,23 @@ case "$PREINSTALLED_MODEL" in
     "")
         echo "$PREINSTALLED_MODEL environment variable is not set. Skipping model download."
         ;;
-    "T2V-14B")
-        huggingface-cli download Comfy-Org/Wan_2.1_ComfyUI_repackaged split_files/diffusion_models/wan2.1_t2v_14B_fp8_e4m3fn.safetensors --local-dir /comfyui-models/diffusion_models
-        ;;
-    "I2V-14B-720P")
-        huggingface-cli download Comfy-Org/Wan_2.1_ComfyUI_repackaged split_files/diffusion_models/wan2.1_i2v_720p_14B_fp8_e4m3fn.safetensors --local-dir /comfyui-models/diffusion_models
-        ;;
-    "I2V-14B-480P")
-        huggingface-cli download Comfy-Org/Wan_2.1_ComfyUI_repackaged split_files/diffusion_models/wan2.1_i2v_480p_14B_fp8_e4m3fn.safetensors --local-dir /comfyui-models/diffusion_models
-        ;;
-    "FLF2V-14B")
-        huggingface-cli download Comfy-Org/Wan_2.1_ComfyUI_repackaged split_files/diffusion_models/wan2.1_flf2v_720p_14B_fp8_e4m3fn.safetensors --local-dir /comfyui-models/diffusion_models
+    "T2V-14B"|"I2V-14B-720P"|"I2V-14B-480P"|"FLF2V-14B")
+        echo "**** Starting model download. This may take some time... ****"
+        case "$PREINSTALLED_MODEL" in
+            "T2V-14B")
+                model="wan2.1_t2v_14B_fp8_e4m3fn.safetensors"
+                ;;
+            "I2V-14B-720P")
+                model="wan2.1_i2v_720p_14B_fp8_e4m3fn.safetensors"
+                ;;
+            "I2V-14B-480P")
+                model="wan2.1_i2v_480p_14B_fp8_e4m3fn.safetensors"
+                ;;
+            "FLF2V-14B")
+                model="wan2.1_flf2v_720p_14B_fp8_e4m3fn.safetensors"
+                ;;
+        esac
+        huggingface-cli download Comfy-Org/Wan_2.1_ComfyUI_repackaged split_files/diffusion_models/$model --local-dir /workspace/comfyui-models/diffusion_models
         ;;
 esac
 

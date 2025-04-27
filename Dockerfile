@@ -76,10 +76,13 @@ RUN cd ComfyUI/custom_nodes && \
     find . -name "requirements.txt" -exec pip install --no-cache-dir -r {} \; && \
     find . -name "install.py" -exec python {} \;
 
+# Ensure some directories are created in advance
+RUN mkdir -p /workspace/comfyui-models/{diffusion_models,vae,text_encoders,clip_vision} /workspace/{ComfyUI,logs,venv} 
+
 # Vae, Text Encoder, Clip Vison
-RUN huggingface-cli download Comfy-Org/Wan_2.1_ComfyUI_repackaged split_files/vae/wan_2.1_vae.safetensors --local-dir /comfyui-models/vae && \
-    huggingface-cli download Comfy-Org/Wan_2.1_ComfyUI_repackaged split_files/text_encoders/umt5_xxl_fp16.safetensors --local-dir /comfyui-models/text_encoders && \
-    huggingface-cli download Comfy-Org/Wan_2.1_ComfyUI_repackaged split_files/clip_vision/clip_vision_h.safetensors --local-dir /comfyui-models/clip_vision
+RUN huggingface-cli download Comfy-Org/Wan_2.1_ComfyUI_repackaged split_files/vae/wan_2.1_vae.safetensors --local-dir /workspace/comfyui-models/vae && \
+    huggingface-cli download Comfy-Org/Wan_2.1_ComfyUI_repackaged split_files/text_encoders/umt5_xxl_fp16.safetensors --local-dir /workspace/comfyui-models/text_encoders && \
+    huggingface-cli download Comfy-Org/Wan_2.1_ComfyUI_repackaged split_files/clip_vision/clip_vision_h.safetensors --local-dir /workspace/comfyui-models/clip_vision
 
 # NGINX Proxy Configuration
 COPY proxy/nginx.conf /etc/nginx/nginx.conf
