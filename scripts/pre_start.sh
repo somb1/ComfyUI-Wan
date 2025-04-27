@@ -60,6 +60,7 @@ if [ "${INSTALL_SAGEATTENTION,,}" = "true" ]; then
         git clone https://github.com/thu-ml/SageAttention.git /SageAttention > /dev/null 2>&1
         cd /SageAttention
         python setup.py install > /dev/null 2>&1
+        echo "**** SageAttention installation completed. ****"
     fi
 fi
 
