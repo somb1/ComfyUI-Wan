@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [base, t2v-14b, i2v-14b-720p, i2v-14b-480p, flf2v-14b]
+        target: [base]
     steps:
       - name: Maximize build space
         uses: AdityaGarg8/remove-unwanted-software@v5
