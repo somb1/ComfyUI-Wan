@@ -1,4 +1,5 @@
-> This template downloads the model based on the PREINSTALLED_MODEL variable. **Modify the template and change the value before deployment to download your desired model.**
+> This template downloads a model at startup based on the PREINSTALLED_MODEL variable. **Before deployment, modify the template and set the value to the model you want to download.**
+> If you don't want any model to be downloaded at startup, leave the value empty or delete the environment variable.
 
 | Port | Type (HTTP/TCP) | Function     |
 |------|-----------------|--------------|
