@@ -28,24 +28,6 @@ find "/workspace/venv/bin" -type f | while read -r file; do
     fi
 done
 
-echo "**** syncing ComfyUI to workspace, please wait ****"
-rsync -au --remove-source-files /ComfyUI/ /workspace/ComfyUI/ && rm -rf /ComfyUI
-for dir in /comfyui-models/*/; do
-    name=$(basename "$dir")
-    ln -sf "$dir" "/workspace/ComfyUI/models/$name"
-done
-
-if [ "${INSTALL_SAGEATTENTION,,}" = "true" ]; then
-    if pip show sageattention > /dev/null 2>&1; then
-        echo "**** SageAttention is already installed. Skipping installation. ****"
-    else
-        echo "**** SageAttention is not installed. Installing, please wait.... (This may take a long time, approximately 5+ minutes.) ****"
-        git clone https://github.com/thu-ml/SageAttention.git /SageAttention
-        cd /SageAttention
-        python setup.py install > /dev/null 2>&1
-    fi
-fi
-
 case "$PREINSTALLED_MODEL" in
     "")
         echo "$PREINSTALLED_MODEL environment variable is not set. Skipping model download."
@@ -63,3 +45,21 @@ case "$PREINSTALLED_MODEL" in
         huggingface-cli download Comfy-Org/Wan_2.1_ComfyUI_repackaged split_files/diffusion_models/wan2.1_flf2v_720p_14B_fp8_e4m3fn.safetensors --local-dir /comfyui-models/diffusion_models
         ;;
 esac
+
+if [ "${INSTALL_SAGEATTENTION,,}" = "true" ]; then
+    if pip show sageattention > /dev/null 2>&1; then
+        echo "**** SageAttention is already installed. Skipping installation. ****"
+    else
+        echo "**** SageAttention is not installed. Installing, please wait.... (This may take a long time, approximately 5+ minutes.) ****"
+        git clone https://github.com/thu-ml/SageAttention.git /SageAttention
+        cd /SageAttention
+        python setup.py install > /dev/null 2>&1
+    fi
+fi
+
+echo "**** syncing ComfyUI to workspace, please wait ****"
+rsync -au --remove-source-files /ComfyUI/ /workspace/ComfyUI/ && rm -rf /ComfyUI
+for dir in /comfyui-models/*/; do
+    name=$(basename "$dir")
+    ln -sf "$dir" "/workspace/ComfyUI/models/$name"
+done
