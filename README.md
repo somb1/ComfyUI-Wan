@@ -6,24 +6,22 @@
 
 ---
 
-| Wan 2.1 Container Image | Description | VRAM Requirement (Approx.) |
-| :--- | :--- | :--- |
-| `sombi/comfyui-wan:i2v-14b-720p-torch2.6.0-cu124-dev` | 720p Image-to-Video | 32GB+ |
-| `sombi/comfyui-wan:i2v-14b-480p-torch2.6.0-cu124-dev`| 480p Image-to-Video | 24GB+ |
-| `sombi/comfyui-wan:flf2v-14b-torch2.6.0-cu124-dev` | 720p First-Last-Frame-to-Video | 32GB+ |
-
-#### **How to Use Container Image**
-
-You can replace the container image in the **Edit Pod** or **Edit Template** section with the desired image.
-
----
-
 | Environment Variable      | Description                                                                 | Default      |
 |----------------------------|-----------------------------------------------------------------------------|--------------|
 | `JUPYTERLAB_PASSWORD`       | Password for JupyterLab. If unset, no password is required.                 | (Not Set)    |
 | `TIME_ZONE`                | System timezone. Defaults to `Etc/UTC` if unset.                            | `Etc/UTC`    |
-| `COMFYUI_EXTRA_ARGS`        | Passes extra startup options to ComfyUI, such as `--fast`. | (Not Set)    |
+| `COMFYUI_EXTRA_ARGS`        | Passes extra startup options to ComfyUI, such as `--fast`.                  | (Not Set)    |
 | `INSTALL_SAGEATTENTION`     | Installs SageAttention at startup if not already installed. (May take about 5+ minutes.) (`True` or `False`) | `True` |
+| `PREINSTALLED_MODEL`        | Specifies the model to download at startup. Defaults to `I2V-14B-480P`.      | `I2V-14B-480P` |
+
+#### Possible Values for `PREINSTALLED_MODEL`
+
+| PREINSTALLED_MODEL         | Description                                | Recommended VRAM |
+|----------------------------|--------------------------------------------|------------------|
+| `T2V-14B`                  | 480p, 720p Text-to-Video                  | ?                |
+| `I2V-14B-720P`             | 720p Image-to-Video                       | 32GB+            |
+| `I2V-14B-480P`             | 480p Image-to-Video                       | 24GB+            |
+| `FLF2V-14B`                | 720p First-Last-Frame-to-Video            | 32GB+            |
 
 #### **How to Use Environment Variables**
 
@@ -70,36 +68,16 @@ If you have any suggestions or issues, please leave feedback at **<https://githu
 
 ### Run Container on Local
 
-usage
-
 ```bash
-# Usage
-docker run -d -p 3000:3000 -p 8888:8888 --gpus all -e JUPYTERLAB_PASSWORD="" -e TIME_ZONE="Etc/UTC" -e COMFYUI_EXTRA_ARGS="" -e INSTALL_SAGEATTENTION="True" <Container Image>
-
-# Example
-docker run -d -p 3000:3000 -p 8888:8888 --gpus all -e JUPYTERLAB_PASSWORD="" -e TIME_ZONE="Etc/UTC" -e COMFYUI_EXTRA_ARGS="" -e INSTALL_SAGEATTENTION="True" sombi/comfyui-wan:i2v-14b-480p-torch2.6.0-cu124-dev
-```
-
-example
-
-```bash
-
+docker run -d -p 3000:3000 -p 8888:8888 --gpus all -e JUPYTERLAB_PASSWORD="" -e TIME_ZONE="Etc/UTC" -e COMFYUI_EXTRA_ARGS="" -e INSTALL_SAGEATTENTION="True" -e PREINSTALLED_MODEL="I2V-14B-480P" sombi/comfyui-wan:base-torch2.6.0-cu124
 ```
 
 ### Building Container
 
-buildx bake
-
 ```bash
-# Usage
-docker buildx bake <target> 
-
-# Example
-docker buildx bake flf2v-14b 
-
-# Build all targets
-docker buildx bake all 
+# Build
+docker buildx bake base
 
 # Build and Push
-docker buildx bake <target> --push 
+docker buildx bake base --push 
 ```
