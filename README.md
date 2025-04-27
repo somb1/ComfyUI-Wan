@@ -17,6 +17,8 @@
 | `INSTALL_SAGEATTENTION`     | Installs SageAttention at startup if not already installed. (May take about 5+ minutes.) (`True` or `False`) | `True` |
 | `DOWNLOAD_MODEL_AT_STARTUP`        | Specifies the model to download at startup.     | `I2V-14B-480P` |
 
+> Installs SageAttention at startup works correctly on GPUs with Ampere or higher.
+
 #### Possible Values for `DOWNLOAD_MODEL_AT_STARTUP`
 
 | DOWNLOAD_MODEL_AT_STARTUP         | Description                                | Recommended VRAM |
