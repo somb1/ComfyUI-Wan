@@ -55,7 +55,7 @@ case "$DOWNLOAD_MODEL_AT_STARTUP" in
 
         if [ ! -f "$model_path" ]; then
             echo "Downloading $model_filename..."
-            wget -q "$model_url" -P "$model_dir"
+            wget "$model_url" -P "$model_dir"
         else
             echo "Model $model_filename already exists. Skipping download."
         fi
@@ -69,7 +69,7 @@ if [ "${INSTALL_SAGEATTENTION,,}" = "true" ]; then
         echo "**** SageAttention is not installed. Installing, please wait.... (This may take a long time, approximately 5+ minutes.) ****"
         git clone https://github.com/thu-ml/SageAttention.git /SageAttention
         cd /SageAttention
-        python setup.py install 2>&1 >/dev/null
+        python setup.py install
         echo "**** SageAttention installation completed. ****"
     fi
 fi
