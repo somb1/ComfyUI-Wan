@@ -48,7 +48,7 @@ case "$DOWNLOAD_MODEL_AT_STARTUP" in
                 model="wan2.1_flf2v_720p_14B_fp8_e4m3fn.safetensors"
                 ;;
         esac
-        huggingface-cli download Comfy-Org/Wan_2.1_ComfyUI_repackaged split_files/diffusion_models/$model --local-dir /workspace/comfyui-models/diffusion_models
+        huggingface-cli download Comfy-Org/Wan_2.1_ComfyUI_repackaged split_files/diffusion_models/$model --local-dir /workspace/preinstalled_models
         ;;
 esac
 
@@ -66,7 +66,7 @@ fi
 
 echo "**** syncing ComfyUI to workspace, please wait ****"
 rsync -au --remove-source-files /ComfyUI/ /workspace/ComfyUI/ && rm -rf /ComfyUI
-for dir in /comfyui-models/*/; do
+for dir in /preinstalled_models/split_files/*/; do
     name=$(basename "$dir")
     ln -sf "$dir" "/workspace/ComfyUI/models/$name"
 done

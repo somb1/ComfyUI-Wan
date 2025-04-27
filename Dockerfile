@@ -56,6 +56,7 @@ RUN pip install --no-cache-dir -U \
     pip setuptools wheel \
     jupyterlab jupyterlab_widgets ipykernel ipywidgets \
     huggingface_hub hf_transfer \
+    numpy scipy matplotlib pandas scikit-learn seaborn requests tqdm pillow pyyaml \
     torch==${TORCH_VERSION} torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/${CUDA_VERSION} \
     triton
 
@@ -77,12 +78,12 @@ RUN cd ComfyUI/custom_nodes && \
     find . -name "install.py" -exec python {} \;
 
 # Ensure some directories are created in advance
-RUN mkdir -p /workspace/comfyui-models/{diffusion_models,vae,text_encoders,clip_vision} /workspace/{ComfyUI,logs,venv} 
+RUN mkdir -p /workspace/{ComfyUI,logs,venv,preinstalled_models} 
 
 # Vae, Text Encoder, Clip Vison
-RUN huggingface-cli download Comfy-Org/Wan_2.1_ComfyUI_repackaged split_files/vae/wan_2.1_vae.safetensors --local-dir /workspace/comfyui-models/vae && \
-    huggingface-cli download Comfy-Org/Wan_2.1_ComfyUI_repackaged split_files/text_encoders/umt5_xxl_fp16.safetensors --local-dir /workspace/comfyui-models/text_encoders && \
-    huggingface-cli download Comfy-Org/Wan_2.1_ComfyUI_repackaged split_files/clip_vision/clip_vision_h.safetensors --local-dir /workspace/comfyui-models/clip_vision
+RUN huggingface-cli download Comfy-Org/Wan_2.1_ComfyUI_repackaged split_files/vae/wan_2.1_vae.safetensors --local-dir /workspace/preinstalled_models && \
+    huggingface-cli download Comfy-Org/Wan_2.1_ComfyUI_repackaged split_files/text_encoders/umt5_xxl_fp16.safetensors --local-dir /workspace/preinstalled_models && \
+    huggingface-cli download Comfy-Org/Wan_2.1_ComfyUI_repackaged split_files/clip_vision/clip_vision_h.safetensors --local-dir /workspace/preinstalled_models
 
 # NGINX Proxy Configuration
 COPY proxy/nginx.conf /etc/nginx/nginx.conf
