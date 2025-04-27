@@ -31,6 +31,7 @@ group "all" {
 target "_common" {
     dockerfile = "Dockerfile"
     context = "."
+    output = ["type=registry"]
     args = {
         BASE_IMAGE         = BASE_IMAGE
         PYTHON_VERSION     = PYTHON_VERSION
