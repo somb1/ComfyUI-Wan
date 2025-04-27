@@ -74,6 +74,7 @@ RUN cd ComfyUI/custom_nodes && \
     git clone https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git && \
     git clone https://github.com/city96/ComfyUI-GGUF.git && \
     git clone https://github.com/crystian/ComfyUI-Crystools.git && \
+    git clone https://github.com/kijai/ComfyUI-KJNodes && \
     find . -name "requirements.txt" -exec pip install --no-cache-dir -r {} \; && \
     find . -name "install.py" -exec python {} \;
 

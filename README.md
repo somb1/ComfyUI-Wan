@@ -78,7 +78,8 @@ If you have any suggestions or issues, please leave feedback at **<https://githu
 - `ComfyUI-WanVideoWrapper` - [Link](https://github.com/kijai/ComfyUI-WanVideoWrapper)
 - `ComfyUI-VideoHelperSuite` - [Link](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 - `ComfyUI-GGUF` - [Link](https://github.com/city96/ComfyUI-GGUF)
-- `ComfyUI-Crystools` - [Link](https://github.com/crystian/ComfyUI-Crystools)  
+- `ComfyUI-Crystools` - [Link](https://github.com/crystian/ComfyUI-Crystools)
+- `ComfyUI-KJNodes` - [Link](https://github.com/kijai/ComfyUI-KJNodes)  
 
 ---
 
