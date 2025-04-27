@@ -79,12 +79,13 @@ RUN cd ComfyUI/custom_nodes && \
     find . -name "install.py" -exec python {} \;
 
 # Ensure some directories are created in advance
-RUN mkdir -p /workspace/preinstalled_models/split_files{vae,text_encoders,clip_vision,diffusion_models} /workspace/{ComfyUI,logs,venv} 
+RUN mkdir -p /preinstalled_models/{vae,text_encoders,clip_vision,diffusion_models} /workspace/{ComfyUI,logs,venv} 
 
 # Vae, Text Encoder, Clip Vison
-RUN huggingface-cli download Comfy-Org/Wan_2.1_ComfyUI_repackaged split_files/vae/wan_2.1_vae.safetensors --local-dir /workspace/preinstalled_models && \
-    huggingface-cli download Comfy-Org/Wan_2.1_ComfyUI_repackaged split_files/text_encoders/umt5_xxl_fp16.safetensors --local-dir /workspace/preinstalled_models && \
-    huggingface-cli download Comfy-Org/Wan_2.1_ComfyUI_repackaged split_files/clip_vision/clip_vision_h.safetensors --local-dir /workspace/preinstalled_models
+RUN wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1_VAE_bf16.safetensors -P /preinstalled_models/vae && \
+    wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/umt5-xxl-enc-bf16.safetensors -P /preinstalled_models/text_encoders && \
+    wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/open-clip-xlm-roberta-large-vit-huge-14_visual_fp16.safetensors -P /preinstalled_models/text_encoders && \
+    wget -q https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/clip_vision/clip_vision_h.safetensors -P /preinstalled_models/clip_vision
 
 # NGINX Proxy Configuration
 COPY proxy/nginx.conf /etc/nginx/nginx.conf

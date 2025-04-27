@@ -36,19 +36,29 @@ case "$DOWNLOAD_MODEL_AT_STARTUP" in
         echo "**** Starting model download. This may take some time... ****"
         case "$DOWNLOAD_MODEL_AT_STARTUP" in
             "T2V-14B")
-                model="wan2.1_t2v_14B_fp8_e4m3fn.safetensors"
+                model_url="https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1-T2V-14B_fp8_e4m3fn.safetensors"
                 ;;
             "I2V-14B-720P")
-                model="wan2.1_i2v_720p_14B_fp8_e4m3fn.safetensors"
+                model_url="https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1-I2V-14B-720P_fp8_e4m3fn.safetensors"
                 ;;
             "I2V-14B-480P")
-                model="wan2.1_i2v_480p_14B_fp8_e4m3fn.safetensors"
+                model_url="https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1-I2V-14B-480P_fp8_e4m3fn.safetensors"
                 ;;
             "FLF2V-14B")
-                model="wan2.1_flf2v_720p_14B_fp8_e4m3fn.safetensors"
+                model_url="https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1-FLF2V-14B-720P_fp8_e4m3fn.safetensors"
                 ;;
         esac
-        huggingface-cli download Comfy-Org/Wan_2.1_ComfyUI_repackaged split_files/diffusion_models/$model --local-dir /workspace/preinstalled_models
+
+        model_dir="/workspace/ComfyUI/models/diffusion_models"
+        model_filename=$(basename "$model_url")
+        model_path="$model_dir/$model_filename"
+
+        if [ ! -f "$model_path" ]; then
+            echo "Downloading $model_filename..."
+            wget -q "$model_url" -P "$model_dir"
+        else
+            echo "Model $model_filename already exists. Skipping download."
+        fi
         ;;
 esac
 
@@ -66,7 +76,7 @@ fi
 
 echo "**** syncing ComfyUI to workspace, please wait ****"
 rsync -au --remove-source-files /ComfyUI/ /workspace/ComfyUI/ && rm -rf /ComfyUI
-ln -sf /workspace/preinstalled_models/split_files/diffusion_models/* /workspace/ComfyUI/models/diffusion_models/
-ln -sf /workspace/preinstalled_models/split_files/vae/* /workspace/ComfyUI/models/vae/
-ln -sf /workspace/preinstalled_models/split_files/text_encoder/* /workspace/ComfyUI/models/text_encoder/
-ln -sf /workspace/preinstalled_models/split_files/clip_vision/* /workspace/ComfyUI/models/clip_vision/
+ln -sf /preinstalled_models/vae/* /workspace/ComfyUI/models/vae/
+ln -sf /preinstalled_models/text_encoders/* /workspace/ComfyUI/models/text_encoders/
+ln -sf /preinstalled_models/clip_vision/* /workspace/ComfyUI/models/clip_vision/
+ln -sf /preinstalled_models/diffusion_models/* /workspace/ComfyUI/models/diffusion_models/
