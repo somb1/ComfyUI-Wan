@@ -78,7 +78,7 @@ RUN cd ComfyUI/custom_nodes && \
     find . -name "install.py" -exec python {} \;
 
 # Ensure some directories are created in advance
-RUN mkdir -p /workspace/{ComfyUI,logs,venv,preinstalled_models} 
+RUN mkdir -p /workspace/preinstalled_models/split_files{vae,text_encoders,clip_vision,diffusion_models} /workspace/{ComfyUI,logs,venv} 
 
 # Vae, Text Encoder, Clip Vison
 RUN huggingface-cli download Comfy-Org/Wan_2.1_ComfyUI_repackaged split_files/vae/wan_2.1_vae.safetensors --local-dir /workspace/preinstalled_models && \
