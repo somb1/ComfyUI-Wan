@@ -37,13 +37,13 @@ target "_common" {
         TORCH_VERSION      = TORCH_VERSION
         CUDA_VERSION       = CUDA_VERSION
     }
+    cache-to   = ["type=gha,compression=zstd"]
     cache-from = ["type=gha"]
 }
 
 target "base" {
     inherits = ["_common"]
     tags = tag("base")
-    cache-to   = ["type=gha,mode=max,compression=zstd"]
 }
 
 target "t2v-14b" {

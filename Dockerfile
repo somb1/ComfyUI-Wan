@@ -16,7 +16,6 @@ ARG PREINSTALLED_MODEL
 ENV SHELL=/bin/bash 
 ENV PYTHONUNBUFFERED=True 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/x86_64-linux-gnu 
 ENV UV_COMPILE_BYTECODE=1
 ENV TZ=Etc/UTC
 
@@ -85,22 +84,26 @@ RUN case "$PREINSTALLED_MODEL" in \
     "T2V-14B") \
         wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1-T2V-14B_fp8_e4m3fn.safetensors -P /comfyui-models/diffusion_models && \
         wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1_VAE_bf16.safetensors -P /comfyui-models/vae && \
+        wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/open-clip-xlm-roberta-large-vit-huge-14_visual_fp16.safetensors -P /comfyui-models/text_encoders \
         wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/umt5-xxl-enc-bf16.safetensors -P /comfyui-models/text_encoders \
         ;; \
     "I2V-14B-720P") \
         wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1-I2V-14B-720P_fp8_e4m3fn.safetensors -P /comfyui-models/diffusion_models && \
         wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1_VAE_bf16.safetensors -P /comfyui-models/vae && \
         wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/open-clip-xlm-roberta-large-vit-huge-14_visual_fp16.safetensors -P /comfyui-models/text_encoders \
+        wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/umt5-xxl-enc-bf16.safetensors -P /comfyui-models/text_encoders \
         ;; \
     "I2V-14B-480P") \
         wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1-I2V-14B-480P_fp8_e4m3fn.safetensors -P /comfyui-models/diffusion_models && \
         wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1_VAE_bf16.safetensors -P /comfyui-models/vae && \
         wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/open-clip-xlm-roberta-large-vit-huge-14_visual_fp16.safetensors -P /comfyui-models/text_encoders \
+        wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/umt5-xxl-enc-bf16.safetensors -P /comfyui-models/text_encoders \
         ;; \
     "FLF2V-14B") \
         wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1-T2V-14B_fp8_e4m3fn.safetensors -P /comfyui-models/diffusion_models && \
         wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1_VAE_bf16.safetensors -P /comfyui-models/vae && \
         wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/open-clip-xlm-roberta-large-vit-huge-14_visual_fp16.safetensors -P /comfyui-models/text_encoders \
+        wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/umt5-xxl-enc-bf16.safetensors -P /comfyui-models/text_encoders \
         ;; \
     esac
 
