@@ -22,8 +22,9 @@
 #### Possible Values for `DOWNLOAD_MODEL_AT_STARTUP`
 
 | DOWNLOAD_MODEL_AT_STARTUP         | Description                                | Recommended VRAM |
-|----------------------------|--------------------------------------------|------------------|
+|----------------------------|-------------------------------------------|------------------|
 | `T2V-14B`                  | 480p, 720p Text-to-Video                  | ?                |
+| `T2V-1_3B`                 | 480p Text-to-Video                        | ?                |
 | `I2V-14B-720P`             | 720p Image-to-Video                       | 32GB+            |
 | `I2V-14B-480P`             | 480p Image-to-Video                       | 24GB+            |
 | `FLF2V-14B`                | 720p First-Last-Frame-to-Video            | 32GB+            |
