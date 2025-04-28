@@ -39,7 +39,7 @@ case "$DOWNLOAD_MODEL_AT_STARTUP" in
                 model_url="https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1-T2V-14B_fp8_e4m3fn.safetensors"
                 ;;
             "T2V-1_3B")
-                model_url="https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1-T2V-1_3B_bf16.safetensors?download=true"
+                model_url="https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1-T2V-1_3B_bf16.safetensors"
                 ;;
             "I2V-14B-720P")
                 model_url="https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1-I2V-14B-720P_fp8_e4m3fn.safetensors"
