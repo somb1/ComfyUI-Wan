@@ -6,21 +6,21 @@
 
 | Port | Type (HTTP/TCP) | Purpose       |
 |------|-----------------|---------------|
-| 22   | TCP              | SSH Access    |
-| 3000 | HTTP             | ComfyUI       |
-| 8888 | HTTP             | JupyterLab    |
+| 22   | TCP             | SSH Access    |
+| 3000 | HTTP            | ComfyUI       |
+| 8888 | HTTP            | JupyterLab    |
 
 ---
 
 ### Environment Variables
 
-| Variable                  | Description                                                                  | Default       |
-|----------------------------|------------------------------------------------------------------------------|---------------|
-| `JUPYTERLAB_PASSWORD`      | Password for JupyterLab. If unset, no password will be required.              | (Not Set)     |
-| `TIME_ZONE`                | System timezone. Defaults to `Etc/UTC` if unset.                             | `Etc/UTC`     |
-| `COMFYUI_EXTRA_ARGS`       | Extra startup options for ComfyUI, e.g., `--fast`.                           | (Not Set)     |
-| `INSTALL_SAGEATTENTION`    | Install SageAttention at startup (`True` or `False`). May take over 5 minutes. | `True`        |
-| `PREINSTALLED_MODEL`       | Specifies which model to download at startup.                                | `I2V-14B-480P` |
+| Variable                   | Description                                                                    | Default        |
+|----------------------------|--------------------------------------------------------------------------------|----------------|
+| `JUPYTERLAB_PASSWORD`      | Password for JupyterLab. If unset, no password will be required.               | (Not Set)      |
+| `TIME_ZONE`                | System timezone. Defaults to `Etc/UTC` if unset.                               | `Etc/UTC`      |
+| `COMFYUI_EXTRA_ARGS`       | Extra startup options for ComfyUI, e.g., `--fast`.                             | (Not Set)      |
+| `INSTALL_SAGEATTENTION`    | Install SageAttention at startup (`True` or `False`). May take over 5 minutes. | `True`         |
+| `PREINSTALLED_MODEL`       | Specifies which model to download at startup.                                  | `I2V-14B-480P` |
 
 > **Note:** Installing SageAttention works correctly on GPUs from the Ampere architecture or newer.
 
@@ -30,11 +30,11 @@
 
 | Value                | Description                         | Recommended VRAM |
 |----------------------|-------------------------------------|------------------|
-| `T2V-14B`             | 480p/720p Text-to-Video             | ?                |
-| `T2V-1_3B`            | 480p Text-to-Video                  | ?                |
-| `I2V-14B-720P`        | 720p Image-to-Video                 | 32GB+            |
-| `I2V-14B-480P`        | 480p Image-to-Video                 | 24GB+            |
-| `FLF2V-14B`           | 720p First-Last-Frame-to-Video      | 32GB+            |
+| `T2V-14B`            | 480p/720p Text-to-Video             | 24GB+            |
+| `T2V-1_3B`           | 480p Text-to-Video                  | 8GB+             |
+| `I2V-14B-720P`       | 720p Image-to-Video                 | 32GB+            |
+| `I2V-14B-480P`       | 480p Image-to-Video                 | 24GB+            |
+| `FLF2V-14B`          | 720p First-Last-Frame-to-Video      | 32GB+            |
 
 ### How to Set Environment Variables
 

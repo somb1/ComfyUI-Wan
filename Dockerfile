@@ -75,6 +75,11 @@ RUN cd ComfyUI/custom_nodes && \
     git clone https://github.com/city96/ComfyUI-GGUF.git && \
     git clone https://github.com/crystian/ComfyUI-Crystools.git && \
     git clone https://github.com/kijai/ComfyUI-KJNodes && \
+    git clone https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git && \
+    git clone https://github.com/rgthree/rgthree-comfy.git && \
+    git clone https://github.com/Flow-two/ComfyUI-WanStartEndFramesNative.git && \
+    git clone https://github.com/Smirnov75/ComfyUI-mxToolkit.git && \
+    git clone https://github.com/Fannovel16/ComfyUI-Frame-Interpolation.git && \
     find . -name "requirements.txt" -exec pip install --no-cache-dir -r {} \; && \
     find . -name "install.py" -exec python {} \;
 
