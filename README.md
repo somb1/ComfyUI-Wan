@@ -74,11 +74,11 @@
 
 #### VAE
 
-- `wan_2.1_vae.safetensors` - [Link](https://huggingface.co/Kijai/WanVideo_comfy/blob/main/Wan2_1_VAE_bf16.safetensors)
+- `Wan2_1_VAE_bf16.safetensors` - [Link](https://huggingface.co/Kijai/WanVideo_comfy/blob/main/Wan2_1_VAE_bf16.safetensors)
 
 #### Text Encoder
 
-- `umt5_xxl_fp16.safetensors` - [Link](https://huggingface.co/Kijai/WanVideo_comfy/blob/main/umt5-xxl-enc-bf16.safetensors)
+- `umt5-xxl-enc-bf16.safetensors` - [Link](https://huggingface.co/Kijai/WanVideo_comfy/blob/main/umt5-xxl-enc-bf16.safetensors)
 
 #### CLIP Vision
 
