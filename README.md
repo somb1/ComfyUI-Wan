@@ -105,14 +105,7 @@
 ## Running the Container Locally
 
 ```bash
-docker run -d -p 3000:3000 -p 8888:8888 --gpus all \
-  -e JUPYTERLAB_PASSWORD="" \
-  -e TIME_ZONE="Etc/UTC" \
-  -e COMFYUI_EXTRA_ARGS="" \
-  -e INSTALL_SAGEATTENTION="True" \
-  -e PREINSTALLED_MODEL="I2V-14B-480P" \
-  --name comfyui-wan2.1 \
-  sombi/comfyui-wan:base-torch2.6.0-cu124
+docker run -d -p 3000:3000 -p 8888:8888 --gpus all -e JUPYTERLAB_PASSWORD="" -e TIME_ZONE="Etc/UTC" -e COMFYUI_EXTRA_ARGS="" -e INSTALL_SAGEATTENTION="True" -e PREINSTALLED_MODEL="I2V-14B-480P" -v comfyui-wan2.1:/workspace --name comfyui-wan2.1 sombi/comfyui-wan:base-torch2.6.0-cu124
 ```
 
 ## Building the Container
