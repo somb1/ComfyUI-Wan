@@ -87,9 +87,9 @@ RUN cd ComfyUI/custom_nodes && \
 RUN mkdir -p /preinstalled_models/{vae,text_encoders,clip_vision,diffusion_models} /workspace/{ComfyUI,logs,venv} 
 
 # Vae, Text Encoder, Clip Vison
-RUN wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1_VAE_bf16.safetensors -P /preinstalled_models/vae && \
-    wget -q https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/umt5-xxl-enc-bf16.safetensors -P /preinstalled_models/text_encoders && \
-    wget -q https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/clip_vision/clip_vision_h.safetensors -P /preinstalled_models/clip_vision
+RUN wget --no-verbose https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1_VAE_bf16.safetensors -P /preinstalled_models/vae && \
+    wget --no-verbose https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/umt5-xxl-enc-bf16.safetensors -P /preinstalled_models/text_encoders && \
+    wget ---no-verbose https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/clip_vision/clip_vision_h.safetensors -P /preinstalled_models/clip_vision
 
 # NGINX Proxy Configuration
 COPY proxy/nginx.conf /etc/nginx/nginx.conf
