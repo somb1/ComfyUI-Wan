@@ -58,7 +58,7 @@ case "$DOWNLOAD_MODEL_AT_STARTUP" in
 
         if [ ! -f "$model_path" ]; then
             echo "Downloading $model_filename..."
-            wget "$model_url" -P "$model_dir"
+            wget -q "$model_url" -P "$model_dir"
         else
             echo "Model $model_filename already exists. Skipping download."
         fi
